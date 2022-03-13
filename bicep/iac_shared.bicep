@@ -84,15 +84,15 @@ resource azureFunction 'Microsoft.Web/sites@2020-12-01' = {
       appSettings: [
         {
           name: 'AzureWebJobsDashboard'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccName};AccountKey=${listKeys(storageaccount.id, '2019-06-01').key1}'
+          value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccName};AccountKey=${listKeys(storageaccount.id, '2019-06-01').keys[0].value}'
         }
         {
           name: 'AzureWebJobsStorage'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccName};AccountKey=${listKeys(storageaccount.id, '2019-06-01').key1}'
+          value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccName};AccountKey=${listKeys(storageaccount.id, '2019-06-01').keys[0].value}'
         }
         {
           name: 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccName};AccountKey=${listKeys(storageaccount.id, '2019-06-01').key1}'
+          value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccName};AccountKey=${listKeys(storageaccount.id, '2019-06-01').keys[0].value}'
         }
         {
           name: 'WEBSITE_CONTENTSHARE'
@@ -114,8 +114,5 @@ resource azureFunction 'Microsoft.Web/sites@2020-12-01' = {
     }
   }
   dependsOn: [
-    appInsightsComponents
-    appServicePlan
-    storageaccount
   ]
 }
