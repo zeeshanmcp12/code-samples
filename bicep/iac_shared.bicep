@@ -7,6 +7,7 @@ param applicationShortName string
 @description('Location where resource has to be provision')
 @allowed([
   'southeastasia'
+  'uaenorth'
 ])
 param location string
 
@@ -31,10 +32,10 @@ param enviroment string
 param storageAccountType string = 'Standard_LRS'
 
 
-var aspName = toLower('asp-${applicationName}-sea-${enviroment}')
-var applicationInsightsName = toLower('ai-${applicationName}-sea-${enviroment}')
-var funcAppName = toLower('aspw-${applicationName}-sea-${enviroment}')
-var storageAccName = toLower('stlrs${applicationShortName}sea${enviroment}')
+var aspName = toLower('asp-${applicationName}-aen-${enviroment}')
+var applicationInsightsName = toLower('ai-${applicationName}-aen-${enviroment}')
+var funcAppName = toLower('aspw-${applicationName}-aen-${enviroment}')
+var storageAccName = toLower('stlrs${applicationShortName}aen${enviroment}')
 
 
 resource appInsightsComponents 'Microsoft.Insights/components@2020-02-02-preview' = {
